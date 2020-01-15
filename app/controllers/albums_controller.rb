@@ -13,6 +13,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     if @album.save
+      flash[:notice] = "Album successfully added!"
       redirect_to albums_path
     else
       render :new
@@ -47,7 +48,7 @@ class AlbumsController < ApplicationController
     def self.rock
       where(genre: "Rock")
     end
-    
+
     private
     def album_params
       params.require(:album).permit(:name, :genre)
