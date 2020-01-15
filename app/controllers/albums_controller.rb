@@ -44,6 +44,10 @@ class AlbumsController < ApplicationController
       redirect_to albums_path
     end
 
+    def self.rock
+      where(genre: "Rock")
+    end
+    
     private
     def album_params
       params.require(:album).permit(:name, :genre)
